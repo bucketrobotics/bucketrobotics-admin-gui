@@ -28,4 +28,3 @@ jobs:
       with:
         name: page-artifact
         path: build/
-    - run: npm test

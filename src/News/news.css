@@ -1,0 +1,13 @@
+.news-article-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.news-article {
+    border: 1px solid black;
+}
+
+.news-article-title {
+    font-size: 2em;
+}

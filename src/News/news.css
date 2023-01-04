@@ -11,3 +11,21 @@
 .news-article-title {
     font-size: 2em;
 }
+
+.edit-article {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.edit-article-panel {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    right: 30px;
+    bottom: 30px;
+    background-color: white;;
+}

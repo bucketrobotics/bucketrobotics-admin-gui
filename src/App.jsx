@@ -9,7 +9,7 @@ import { useAuthUser } from './useAuthUser';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, signOut } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -30,6 +30,10 @@ const firebaseApp = initializeApp(firebaseConfig);
 const analytics = getAnalytics(firebaseApp);
 const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
+
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+  connectFirestoreEmulator(db, 'localhost', 8080);
+}
 
 function App() {
   const uid = useAuthUser(auth);

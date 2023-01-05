@@ -40,7 +40,7 @@ function News(props) {
                 {newsArticles.map((x, i) => <NewsArticle article={x} key={i} editArticle={editArticle} deleteArticle={deleteArticle} />)}
             </div>
             <button type="button" onClick={addNews}>Add</button>
-            {editingArticle != "" && (
+            {editingArticle !== "" && (
                 <div className="edit-article">
                     <div className="edit-article-panel"></div>
                 </div>

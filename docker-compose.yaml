@@ -1,0 +1,28 @@
+services:
+  web:
+    entrypoint: bash -c "npm install && npm start"
+    working_dir: /bucketrobotics-admin-gui
+    image: node:19
+    init: true
+    ports:
+    - 3000:3000
+    volumes:
+    - type: bind
+      source: .
+      target: /bucketrobotics-admin-gui
+  firebase_emulator:
+    build: ./docker/firebase-emulator
+    working_dir: /bucketrobotics-admin-gui
+    command: ["--only", "firestore,storage,ui"]
+    ports:
+    - 4400:4400
+    - 4000:4000
+    - 4500:4500
+    - 9150:9150
+    - 8080:8080
+    - 9199:9199
+    volumes:
+    - type: bind
+      source: .
+      target: /bucketrobotics-admin-gui
+

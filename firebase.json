@@ -40,10 +40,6 @@
     "ui": {
       "host": "0.0.0.0",
       "port": 4000
-    },
-    "firestore.websocket": {
-      "host": "0.0.0.0",
-      "port": 9150
     }
   }
 }

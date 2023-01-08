@@ -31,7 +31,7 @@ const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-  connectFirestoreEmulator(db, 'localhost', 8080);
+  connectFirestoreEmulator(db, window.location.origin, 8080);
 }
 
 function App() {

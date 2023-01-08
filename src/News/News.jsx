@@ -1,15 +1,16 @@
 import { useFirestoreCol } from "../firestoreHooks";
 import { NewsArticle } from "./NewsArticle";
+import { EditArticle } from "./EditArticle";
 import "./news.css";
 import { doc, setDoc, deleteDoc } from "firebase/firestore";
 import { useState } from "react";
 
 function News(props) {
-    const [editingArticle, setEditingArticle] = useState("");
+    const [editArticleData, setEditArticleData] = useState(null);
     const newsArticles = useFirestoreCol(props.db, "news-articles");
 
     function editArticle(id) {
-        setEditingArticle(id);
+        setEditArticleData(newsArticles.find(x => x["id"] === id));
     }
 
     function deleteArticle(id) {
@@ -33,6 +34,10 @@ function News(props) {
         await setDoc(doc(props.db, "news-articles", id), data);
     }
 
+    function close() {
+        setEditArticleData(null);
+    }
+
     return (
         <div>
             <h1>News</h1>
@@ -40,9 +45,11 @@ function News(props) {
                 {newsArticles.map((x, i) => <NewsArticle article={x} key={i} editArticle={editArticle} deleteArticle={deleteArticle} />)}
             </div>
             <button type="button" onClick={addNews}>Add</button>
-            {editingArticle !== "" && (
+            {editArticleData && (
                 <div className="edit-article">
-                    <div className="edit-article-panel"></div>
+                    <div className="edit-article-panel">
+                        <EditArticle db={props.db} article={editArticleData} close={close}></EditArticle>
+                    </div>
                 </div>
             )}
         </div>

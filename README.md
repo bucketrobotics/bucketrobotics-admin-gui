@@ -1,3 +1,8 @@
+# IMPORTANT!
+
+This project has been archived. This was due to unexplained extreme read bandwidth on our database.
+If this issue is fixed in the future, this project will be unarchived.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
